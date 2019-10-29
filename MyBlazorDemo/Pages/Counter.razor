@@ -1,0 +1,10 @@
+﻿@page "/counter"
+@inherits CounterBase
+
+<h1>Counter</h1>
+
+<p>Current count: @CounterService.CurrentCount</p>
+
+<h2>Title is: @Title</h2>
+
+<button class="btn btn-primary" @onclick="CounterService.IncrementCount">Click me</button>
