@@ -1,5 +1,40 @@
 ﻿@page "/"
+@using Data
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
+
+<EditForm Model="@Person" OnInvalidSubmit="@HandleInvalidSubmit" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+
+    <ValidationSummary />
+
+    <InputText @bind-Value="Person.Name" />
+
+    <InputNumber @bind-Value="Person.Age" />
+
+    <InputDate @bind-Value="Person.BirthDate" />
+
+    <input type="text" @bind-value="Person.Name" />
+    <input type="date" @bind="Person.BirthDate" />
+
+    <button type="submit">Submit</button>
+</EditForm>
+
+@code {
+    Person Person = new Person
+    {
+        Name = "Eyal"
+    };
+
+    public void HandleInvalidSubmit()
+    {
+
+    }
+
+    public void HandleValidSubmit()
+    {
+
+    }
+}
