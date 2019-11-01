@@ -1,0 +1,12 @@
+﻿@page "/counterWithViewModel"
+@using ViewModels
+
+@inject CounterViewModel ViewModel
+
+<h1>Counter</h1>
+
+<p>Current count: @ViewModel.CounterService.CurrentCount</p>
+
+<h2>Title is: @ViewModel.Title</h2>
+
+<button class="btn btn-primary" @onclick="ViewModel.CounterService.IncrementCount">Click me</button>
