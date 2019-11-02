@@ -59,7 +59,7 @@ namespace MyBlazorDemo
 
             services.AddScoped<ICounterService, CounterService>();
             services.AddSingleton<WeatherForecastService>();
-            services.AddScoped<CounterViewModel>();
+            services.AddTransient<CounterViewModel>();
         }
     }
 }

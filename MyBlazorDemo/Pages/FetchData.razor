@@ -1,13 +1,23 @@
 ﻿@page "/fetchdata"
+@page "/fetchdata/{title}"
+@page "/fetchdata/{id:int}"
+@page "/fetchdata/{title}/{id:int}"
 
 @using MyBlazorDemo.Data
-@inject WeatherForecastService ForecastService
+@inherits FetchDataBase
 
 <h1>Weather forecast</h1>
 
 <p>This component demonstrates fetching data from a service.</p>
 
-@if (forecasts == null)
+<h2>@Title</h2>
+
+<h2>@Id</h2>
+
+<button @onclick="Navigate">Navigate</button>
+<p></p>
+
+@if (Forecasts == null)
 {
     <p><em>Loading...</em></p>
 }
@@ -23,7 +33,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var forecast in forecasts)
+            @foreach (var forecast in Forecasts)
             {
                 <tr>
                     <td>@forecast.Date.ToShortDateString()</td>
@@ -35,12 +45,4 @@ else
         </tbody>
     </table>
 }
-
-@code {
-    WeatherForecast[] forecasts;
-
-    protected override async Task OnInitializedAsync()
-    {
-        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
-    }
 }
